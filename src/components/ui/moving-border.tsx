@@ -1,5 +1,5 @@
 "use client";
-import React, { ButtonHTMLAttributes } from "react";
+import React, { ReactNode, ButtonHTMLAttributes } from "react";
 import {
   motion,
   useAnimationFrame,
@@ -21,19 +21,17 @@ export function Button({
   ...otherProps
 }: {
   borderRadius?: string;
-  children: React.ReactNode;
-  as?: React.ElementType;
+  children: ReactNode;
+  as?: React.ElementType; // Changed to React.ElementType
   containerClassName?: string;
   borderClassName?: string;
   duration?: number;
   className?: string;
-} & ButtonHTMLAttributes<HTMLButtonElement> )
-  
- {
+} & ButtonHTMLAttributes<HTMLButtonElement>) { // Added button attributes
   return (
     <Component
       className={cn(
-        "bg-transparent relative text-xl  h-16 w-40 p-[1px] overflow-hidden ",
+        "bg-transparent relative text-xl h-16 w-40 p-[1px] overflow-hidden",
         containerClassName
       )}
       style={{
@@ -48,7 +46,7 @@ export function Button({
         <MovingBorder duration={duration} rx="30%" ry="30%">
           <div
             className={cn(
-              "h-40 w-40 opacity-[0.8] bg-[radial-gradient(var(--purple-600)_40%,transparent_60%)]",
+              "h-20 w-20 opacity-[0.8] bg-[radial-gradient(var(--sky-500)_40%,transparent_60%)]",
               borderClassName
             )}
           />
@@ -77,12 +75,12 @@ export const MovingBorder = ({
   ry,
   ...otherProps
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   duration?: number;
   rx?: string;
   ry?: string;
-} & React.SVGProps<SVGSVGElement> )=> {
-  const pathRef = useRef<SVGRectElement>();
+} & React.SVGProps<SVGSVGElement>) => { // Used SVGProps for otherProps
+  const pathRef = useRef<SVGRectElement | null>(null);
   const progress = useMotionValue<number>(0);
 
   useAnimationFrame((time) => {
@@ -120,7 +118,7 @@ export const MovingBorder = ({
           height="100%"
           rx={rx}
           ry={ry}
-          
+          ref={pathRef}
         />
       </svg>
       <motion.div
@@ -136,4 +134,4 @@ export const MovingBorder = ({
       </motion.div>
     </>
   );
-};
+}
