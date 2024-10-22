@@ -1,5 +1,4 @@
 "use client";
-
 import React from 'react';
 import { Meteors } from '@/components/ui/meteors';
 import Image from 'next/image';
