@@ -16,7 +16,7 @@ const Footer =() => {
             <h3 className="text-lg font-bold text-white mb-4">Links</h3>
             <ul>
               <li><a href="/" className="hover:text-white">Home</a></li>
-              <li><a href="https://vercel.com/editzfarhans-projects" className="hover:text-white">About</a></li>
+              <li><a href="https://vercel.com/mr-mehrans-projects" className="hover:text-white">About</a></li>
               <li><a href="/courses" className="hover:text-white">Services</a></li>
               <li><a href="/contact" className="hover:text-white">Contact</a></li>
             </ul>
